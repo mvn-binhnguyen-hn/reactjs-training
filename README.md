@@ -70,6 +70,15 @@
 ## Redux form
 
 -   `yarn add redux-form @types/redux-form`
+-   add form reducer
+```
+const rootReducer = combineReducers({
+    //Reducer list here
+    count: countReducers,
+    form: formReducer,
+});
+```
+
 -   Create a form: `const ContactForm: FC<InjectedFormProps> = ({ handleSubmit }) => {}`
 -   Validation:
     -   Synchronous validation; Field level validation
