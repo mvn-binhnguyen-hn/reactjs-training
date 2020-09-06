@@ -1,44 +1,101 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ReactJS training
 
-## Available Scripts
+## Init project
 
-In the project directory, you can run:
+`create-react-app <project-name> --template typescript`
 
-### `yarn start`
+## Config baseUrl
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   Why?
+-   How?
+    -   Add `"baseUrl": "src";` into `tsconfig.json`
+    -   If error occurs: `yarn add eslint-import-resolver-typescript -dev`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Component; State; Props
 
-### `yarn test`
+-   Create a component: Class component, functional component
+-   Handle component state: `setState` / `useState`
+-   Props
+-   Lift state up
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Render a list
 
-### `yarn build`
+```
+{
+    arr.map((item, index) => (
+        <div key={index}>{item}</div>
+    ))
+}
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Form input
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+-   value
+-   onChange: `e.target.value`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Styles in React
 
-### `yarn eject`
+-   Support SCSS/SASS files: `yarn add node-sass`
+-   Inline styles
+-   CSS Stylesheet file
+-   CSS module
+-   Styled components: `yarn add styled-components`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Routing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   Create screen components
+-   `yarn add react-router-dom @types/react-router-dom`
+-   App.tsx:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+<BrowserRouter>
+    <Switch>
+        <Route path="/profile" component={ProfileScreen}></Route>
+        <Route path="/" component={HomeScreen}></Route>
+    </Switch>
+</BrowserRouter>
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-   AppHeader component
+-   AppLayout component
 
-## Learn More
+## Redux, Persist store
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   `yarn add redux react-redux @types/react-redux`
+-   rootReducers: `combineReducers`; `export type RootState = ReturnType<typeof rootReducer>;`
+-   store: `createStore`; `const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;`
+-   Demo `count` reducer
+-   persist store: `yarn add redux-persist`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Redux form
+
+-   `yarn add redux-form @types/redux-form`
+-   Create a form: `const ContactForm: FC<InjectedFormProps> = ({ handleSubmit }) => {}`
+-   Validation:
+    -   Synchronous validation; Field level validation
+    -   Field component
+
+```
+const FormField: FC<Props & WrappedFieldsProps> = ({
+    input,
+    label,
+    placeholder,
+    type,
+    meta: { touched, error, warning },
+}) => (
+    <div>
+        <label>{label}</label>
+        <div>
+            <input {...input} placeholder={placeholder} type={type} />
+            {touched &&
+                ((error && <span>{error}</span>) ||
+                    (warning && <span>{warning}</span>))}
+        </div>
+    </div>
+);
+```
+
+## API request
+
+-   `yarn add axios`
+-   apiHelper: `axios.create; interceptors.request; interceptors.response`

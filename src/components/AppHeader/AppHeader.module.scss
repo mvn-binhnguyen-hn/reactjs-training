@@ -1,0 +1,16 @@
+.logo {
+    width: 90px;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.navbar {
+    list-style: none;
+
+    li {
+        display: inline;
+        padding: 15px;
+    }
+}
