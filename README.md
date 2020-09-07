@@ -66,6 +66,7 @@
 -   store: `createStore`; `const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;`
 -   Demo `count` reducer
 -   persist store: `yarn add redux-persist`
+-   Redux thunk
 
 ## Redux form
 
