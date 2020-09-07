@@ -85,23 +85,23 @@ const rootReducer = combineReducers({
     -   Field component
 
 ```
-const FormField: FC<Props & WrappedFieldsProps> = ({
+const FormField: FC<WrappedFieldProps & Props> = ({
     input,
     label,
-    placeholder,
-    type,
     meta: { touched, error, warning },
-}) => (
-    <div>
-        <label>{label}</label>
+}) => {
+    return (
         <div>
-            <input {...input} placeholder={placeholder} type={type} />
+            <label htmlFor={input.name}>{label}</label>
+            <input {...input} />
             {touched &&
-                ((error && <span>{error}</span>) ||
-                    (warning && <span>{warning}</span>))}
+                ((error && <span className={styles.error}>{error}</span>) ||
+                    (warning && (
+                        <span className={styles.warning}>{warning}</span>
+                    )))}
         </div>
-    </div>
-);
+    );
+};
 ```
 
 ## API request
