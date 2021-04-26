@@ -1,5 +1,17 @@
 # ReactJS training
 
+## Outline
+1. React
+- Typescript; ReactJS (Main concept, Hooks)
+- Style in ReactJS, SCSS.
+- Routing
+2. Redux
+- Redux (Thunk, Saga, Rematch, Redux Toolkit)
+- Redux form, Formik (Form, Validation)
+3. Others
+- API request (axios, interceptors)
+- Testing
+
 ## Init project
 
 `create-react-app <project-name> --template typescript`
